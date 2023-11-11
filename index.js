@@ -16,8 +16,9 @@ app.get('/', (req , res) =>{
 
 app.post('/',(req, res)=>{
   let city = req.body.city;
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apikey}`
-  request[url, (err,response,body) => {
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apikey}` 
+
+request(url, (err,response,body) => {
     if(err){
       res.render('index',{weather:null,error:"Error"});
     }else{
@@ -30,7 +31,7 @@ app.post('/',(req, res)=>{
         res.render('index',{weather:w,error:null});
       }
     }
-  }]
+  })
 })
 app.listen(3000,() =>{
   console.log("listening on port 3000")
