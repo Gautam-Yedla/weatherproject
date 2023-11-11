@@ -26,7 +26,7 @@ app.post('/',(req, res)=>{
       if(weather.main == undefined){
         res.render('index',{weather:null,error:"Error..Please Try again"});
       }else{
-        let w = `Degrees: ${weather.main.temp} ${weather.weather(0).main} in ${weather.name} `
+        let w = `Degrees: ${weather.main.temp} ${weather.weather[0].main} in ${weather.name} `
         res.render('index',{weather:w,error:null});
       }
     }
